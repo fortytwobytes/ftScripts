@@ -38,10 +38,8 @@ chachFiles=(
 
 # loop through array and remove each file/directory
 for file in "${chachFiles[@]}"; do
-  rm -rf "$file" 2>/dev/null
   rm -rf "$file" &>/dev/null
 done
-
 
 storageAfter=$(df -h "$HOME" | grep "$HOME" | awk '{print($4)}' | tr 'i' 'B')
 
@@ -51,3 +49,4 @@ then
 fi
 
 echo "\033[32m -- Available Storage After Cleaning : || $storageAfter || --\n\033[0m"
+
